@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1>A todo list</h1>
+    <form onsubmit="addTask(event)">
+      <label for="task">Enter the todo</label>
+      <input type="text" name="task" id="task" />
+      <input type="submit" value="Add" />
+    </form>
+    <br />
+    <br />
+    <h3>Your tasks</h3>
+    <ul id="theList"></ul>
+
+    <script>
+      function addTask(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const theTask = document.getElementById("task");
+        const taskValue = theTask.value.trim();
+
+        if (taskValue !== "") {
+          const ul = document.getElementById("theList");
+          const li = document.createElement("li");
+
+          li.textContent = taskValue;
+          ul.appendChild(li);
+
+          theTask.value = "";
+        }
+      }
+    </script>
+  </body>
+</html>
