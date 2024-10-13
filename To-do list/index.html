@@ -15,8 +15,8 @@
     <br />
     <br />
     <h3>Your tasks</h3>
-    <ul id="theList"></ul>
-
+    <!-- <ul id="theList"></ul> -->
+    <div id="theList"></div>
     <script>
       function addTask(event) {
         event.preventDefault(); // Prevent form submission
@@ -26,10 +26,31 @@
 
         if (taskValue !== "") {
           const ul = document.getElementById("theList");
+          const ele = document.createElement("span");
+          ele.style.cssText = "margin-right: 10px;";
+          const btn = document.createElement("button");
+          btn.style.cssText = "margin-right: 10px;";
+          const del = document.createElement("button");
           const li = document.createElement("li");
 
-          li.textContent = taskValue;
-          ul.appendChild(li);
+          ele.textContent = taskValue;
+          btn.textContent = "complete";
+          del.textContent = "del";
+          const completeStyle =
+            "margin-right: 10px; text-decoration: line-through;";
+
+          btn.onclick = function (event) {
+            event.preventDefault();
+            ele.style.cssText = completeStyle;
+          };
+
+          del.onclick = function (event) {
+            event.preventDefault();
+            ul.removeChild(ele);
+          };
+          ul.appendChild(ele);
+          ele.appendChild(btn);
+          ele.appendChild(del);
 
           theTask.value = "";
         }
