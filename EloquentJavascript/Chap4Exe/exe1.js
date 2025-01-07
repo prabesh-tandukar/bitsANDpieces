@@ -42,3 +42,13 @@ function range(start, end, step = 1) {
 console.log(range(1, 10));
 console.log(range(1, 9, 2));
 console.log(range(5, 2, -1));
+
+function sum(arr) {
+  let sum = 0;
+  for (let element of arr) {
+    sum += element;
+  }
+  return sum;
+}
+
+console.log(sum(range(1, 10)));
