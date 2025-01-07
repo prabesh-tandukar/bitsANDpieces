@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    </style>
   </head>
   <body>
     <h1>A todo list</h1>
@@ -17,6 +23,13 @@
     <h3>Your tasks</h3>
     <!-- <ul id="theList"></ul> -->
     <div id="theList"></div>
+
+    <div class="container">
+      <div class="a" style="background-color: red">A</div>
+      <div class="b" style="background-color: blue">B</div>
+
+      <div class="c" style="background-color: green">C</div>
+    </div>
     <script>
       function addTask(event) {
         event.preventDefault(); // Prevent form submission
