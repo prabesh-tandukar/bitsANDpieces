@@ -15,23 +15,24 @@
 // console.log(sum(range(1, 10)));
 // // → 55
 
-function range(start, end, step = 1) {
+function range(start, end, step = -1) {
   let array = [];
 
   const goingUp = start <= end;
 
-  if (goingUp && step < 0) {
-    throw new Error("Cannot use negative step for ascending range");
-  }
-  if (!goingUp && step > 0) {
-    throw new Error("Cannot use positive step for descending range");
-  }
+  //   if (goingUp && step < 0) {
+  //     throw new Error("Cannot use negative step for ascending range");
+  //   }
+  //   if (!goingUp && step > 0) {
+  //     throw new Error("Cannot use positive step for descending range");
+  //   }
 
   if (start <= end) {
+    step = Math.abs(step);
     for (let i = start; i <= end; i += step) {
       array.push(i);
     }
-  } else if (start > end && step === -1) {
+  } else if (start > end) {
     for (let i = start; i >= end; i += step) {
       array.push(i);
     }
@@ -42,6 +43,8 @@ function range(start, end, step = 1) {
 console.log(range(1, 10));
 console.log(range(1, 9, 2));
 console.log(range(5, 2, -1));
+console.log(range(5, 2));
+console.log(range(10, 1, -2));
 
 function sum(arr) {
   let sum = 0;
