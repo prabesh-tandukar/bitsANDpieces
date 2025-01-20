@@ -50,3 +50,61 @@ function arrayToList(arr) {
 
 console.log(arrayToList([1, 2, 3, 4]));
 console.log(JSON.stringify(arrayToList([1, 2, 3, 4]), null, 2));
+
+function listToArray(list) {
+  let arr = [];
+  let current = {};
+  let value = 0;
+  current = list;
+
+  while (current !== null) {
+    value = current.value;
+    console.log(value);
+    arr.push(value);
+    current = current.rest;
+  }
+  return arr;
+}
+
+console.log(
+  listToArray({
+    value: 1,
+    rest: {
+      value: 2,
+      rest: null,
+    },
+  })
+);
+
+console.log(listToArray(arrayToList([1, 2, 3, 4])));
+
+function prepend(value, list) {
+  let finalList = {};
+  let prevList = list;
+  let inputValue = value;
+
+  finalList = {
+    value: inputValue,
+    rest: prevList,
+  };
+
+  return finalList;
+}
+
+console.log(prepend(10, prepend(20, null)));
+
+function nth(list, num) {
+  let counter = 0;
+  let current = list;
+  let nthValue = num;
+  for (let i = 0; i == counter; i++) {
+    if (nthValue === counter) {
+      return current.value;
+    } else {
+      current = current.rest;
+      counter++;
+    }
+  }
+}
+
+console.log(nth(arrayToList([10, 20, 30]), 1));
