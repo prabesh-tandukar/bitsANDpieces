@@ -18,6 +18,7 @@
 // // → true
 
 function deepEqual(value1, value2) {
+  console.log("Comparing:", value1, value2);
   if (value1 === value2) {
     return true;
   }
@@ -25,8 +26,8 @@ function deepEqual(value1, value2) {
   if (
     value1 === null ||
     value2 === null ||
-    value1 !== "object" ||
-    value2 !== "object"
+    typeof value1 !== "object" ||
+    typeof value2 !== "object"
   ) {
     return false;
   }
@@ -34,22 +35,17 @@ function deepEqual(value1, value2) {
   let key1 = Object.keys(value1);
   let key2 = Object.keys(value2);
 
+  console.log("Keys:", key1, key2);
+
   if (key1.length !== key2.length) {
     return false;
   }
 
-  for (let key of key1) {
-    if (!key2.includes(key) || !deepEqual(value1[key], value2[key])) {
-      return false;
-    }
-  }
+  return key1.every(
+    (key) => key2.includes(key) && deepEqual(value1[key], value2[key])
+  );
 }
 
-console.log(deepEqual(1, 2));
 let obj = { here: { is: "an" }, object: 2 };
-console.log(deepEqual(obj, obj));
-// → true
-console.log(deepEqual(obj, { here: 1, object: 2 }));
-// → false
+
 console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
-// → true
