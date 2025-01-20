@@ -97,7 +97,8 @@ function nth(list, num) {
   let counter = 0;
   let current = list;
   let nthValue = num;
-  for (let i = 0; i == counter; i++) {
+
+  while (current !== null) {
     if (nthValue === counter) {
       return current.value;
     } else {
@@ -105,6 +106,25 @@ function nth(list, num) {
       counter++;
     }
   }
+  return undefined;
 }
 
-console.log(nth(arrayToList([10, 20, 30]), 1));
+console.log(nth(arrayToList([10, 20, 30]), 2));
+console.log(nth(arrayToList([10, 20, 30]), 0)); // should return 10
+console.log(nth(arrayToList([10, 20, 30]), 1)); // should return 20
+console.log(nth(arrayToList([10, 20, 30]), 2)); // should return 30
+console.log(nth(arrayToList([10, 20, 30]), 3)); // should return undefined
+console.log(nth(arrayToList([]), 0)); // should handle empty list
+
+function recursiveNth(list, num) {
+  if (list === null) {
+    return undefined;
+  }
+  if (num === 0) {
+    return list.value;
+  } else {
+    return recursiveNth(list.rest, num - 1);
+  }
+}
+
+console.log(recursiveNth(arrayToList([10, 20, 30]), 2));
