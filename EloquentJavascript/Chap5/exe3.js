@@ -26,6 +26,16 @@ function every(array, test) {
   return final;
 }
 
-console.log(every([1, 3, 5], (n) => n < 10));
-console.log(every([2, 4, 16], (n) => n < 10));
-console.log(every([], (n) => n < 10));
+// console.log(every([1, 3, 5], (n) => n < 10));
+// console.log(every([2, 4, 16], (n) => n < 10));
+// console.log(every([], (n) => n < 10));
+
+function everyAnother(array, test) {
+  let final = true;
+  final = !array.some((element) => !test(element));
+  return final;
+}
+
+console.log(everyAnother([1, 3, 5], (n) => n < 10));
+console.log(everyAnother([2, 4, 16], (n) => n < 10));
+console.log(everyAnother([], (n) => n < 10));
