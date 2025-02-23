@@ -1,6 +1,9 @@
 const protoRabbit = {
   speak(line) {
-    console.log(`The ${this.type} rabbit says '${line}`);
+    console.log(`The ${this.type} rabbit says '${line}'`);
+  },
+  hop() {
+    console.log(`The ${this.type} rabbit hops!`);
   },
 };
 
@@ -13,3 +16,4 @@ brownRabbit.type = "brown";
 
 whiteRabbit.speak("hello!");
 brownRabbit.speak("hi");
+whiteRabbit.hop();
